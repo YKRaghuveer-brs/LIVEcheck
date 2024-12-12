@@ -18,8 +18,8 @@ const LiveEvents = () => {
     setLiveEvents([]);
 
     try {
-      await axios.post('http://localhost:5000/update-live-events');
-      const response = await axios.get('http://localhost:5000/live-events');
+      await axios.post('https://livecheck-backend.onrender.com/update-live-events');
+      const response = await axios.get('https://livecheck-backend.onrender.com/live-events');
       setLiveEvents(response.data);
       message.success('Live events fetched successfully!');
     } catch (err) {
@@ -38,10 +38,10 @@ const LiveEvents = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/update-channel-events', {
+      await axios.post('https://livecheck-backend.onrender.com/update-channel-events', {
         channelUrl: searchChannel,
       });
-      const response = await axios.get('http://localhost:5000/channel-events', {
+      const response = await axios.get('https://livecheck-backend.onrender.com/channel-events', {
         params: { channelUrl: searchChannel },
       });
       setLiveEvents([response.data]);
